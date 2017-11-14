@@ -8,10 +8,10 @@ uses
 
 type
   TForm1 = class(TForm)
-    lblNumero: TLabel;
     edtNumero: TEdit;
-    btnCalcular: TButton;
-    procedure btnCalcularClick(Sender: TObject);
+    Label1: TLabel;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,32 +25,38 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.btnCalcularClick(Sender: TObject);
+procedure TForm1.Button1Click(Sender: TObject);
+
 var
   Numero: Integer;
+
 begin
-  if (edtNumero.Text = '') then
-  begin
-    ShowMessage('Amigo, preencha o campo!');
-    edtNumero.SetFocus();
-    Abort;
-  end;
+ if (edtNumero.Text = '') then
+ begin
+  ShowMessage('Preencha o número!');
+  edtNumero.SetFocus();
+  Abort;
+ end;
 
-  try
-    Numero := StrToInt(edtNumero.Text);
+ try
+  Numero := StrToInt(edtNumero.Text);
 
-    if (Numero mod 2 = 0) then
-      ShowMessage('O número é par!')
-    else
-      ShowMessage('O número é impar!');
+  if (Numero mod 2 = 0) then
+   ShowMessage('O número é par!')
+  else
+   ShowMessage('O número é ímpar!');
+  
   except
-    ShowMessage('Preencha um número válido!');
+   ShowMessage('Preencha um número válido!');
 
-    edtNumero.Clear();
-    edtNumero.SetFocus();
-    
-    Abort;
+   edtNumero.Clear();
+   edtNumero.SetFocus();
+
+   Abort;
   end;
 end;
 
 end.
+
+
+
