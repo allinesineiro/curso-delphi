@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, DateUtils;
+  Dialogs, StdCtrls, ExtCtrls, DateUtils, jpeg;
 
 type
   TForm1 = class(TForm)
@@ -17,8 +17,6 @@ type
     procedure btnIniciarClick(Sender: TObject);
     procedure btnFinalizarClick(Sender: TObject);
     procedure tmrCronometroTimer(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
 
     private
     HoraInicial: TDateTime;
@@ -41,6 +39,7 @@ begin
 
   lblInicial.Caption := 'Marcou o ponto em: ' + DateToStr(HoraInicial) + ' às ' +  TimeToStr(HoraInicial);
   lblInicial.Visible := True;
+  lblFinal.Visible := false;
 
   tmrCronometro.Enabled := True;
   lblResultado.Visible := True;
@@ -59,32 +58,20 @@ begin
 end;
 
 procedure TForm1.tmrCronometroTimer(Sender: TObject);
-begin
-  lblResultado.Caption := FormatDateTime('HH:MM:SS:ZZZ', now() -  horainicial);
-end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-const
-  DUAS_HORAS = 7200000;
-begin
-  tmrCronometro.Interval := DUAS_HORAS;
-
-
-
-
-end;
-
-procedure TForm1.Button1Click(Sender: TObject);
 var
-  Data: TDatetime;
+  TempoGasto: TDateTime;
+
 begin
-  Data := StrToDate('01/01/2015');
+  TempoGasto := (Now() - horainicial);
 
-  if (IsInLeapYear(Data)) then
-    Showmessage('o ano é bissexto')
+  lblResultado.Caption := FormatDateTime('HH:MM:SS:ZZZ', TempoGasto);
+
+
+  if (DateUtils.MinuteOf(TempoGasto) >= 15) then
+    lblResultado.Font.Color := clRed
   else
-    Showmessage('não é');
-
+    lblResultado.Font.Color := clblue;
 end;
 
 end.
