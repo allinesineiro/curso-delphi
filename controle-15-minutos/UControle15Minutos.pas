@@ -68,7 +68,7 @@ begin
   lblResultado.Caption := FormatDateTime('HH:MM:SS:ZZZ', TempoGasto);
 
 
-  if (DateUtils.MinuteOf(TempoGasto) >= 15) then
+  if (DateUtils.SecondOf(TempoGasto) >= 5) then
     lblResultado.Font.Color := clRed
   else
     lblResultado.Font.Color := clblue;

@@ -1,9 +1,13 @@
 object Form1: TForm1
   Left = 533
   Top = 324
-  Width = 300
-  Height = 198
+  Align = alCustom
+  Anchors = []
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Controle de Intervalo'
+  ClientHeight = 157
+  ClientWidth = 281
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -4064,6 +4068,9 @@ object Form1: TForm1
     FF0000FFFFFFFFFFFF8001FFFFFFFFFFFF8001FFFFFFFFFFFF8001FFFFFFFFFF
     FF8001FFFFFFFFFFFF8001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
   OldCreateOrder = False
+  DesignSize = (
+    281
+    157)
   PixelsPerInch = 96
   TextHeight = 13
   object lblInicial: TLabel
@@ -4072,6 +4079,7 @@ object Form1: TForm1
     Width = 82
     Height = 13
     Caption = 'MostraHoraInicial'
+    Transparent = True
     Visible = False
   end
   object lblFinal: TLabel
@@ -4079,7 +4087,9 @@ object Form1: TForm1
     Top = 112
     Width = 77
     Height = 13
+    Anchors = []
     Caption = 'MostraHoraFinal'
+    Transparent = True
     Visible = False
   end
   object lblResultado: TLabel
@@ -4088,6 +4098,7 @@ object Form1: TForm1
     Width = 80
     Height = 13
     Caption = 'TempoRealizado'
+    Transparent = True
     Visible = False
   end
   object btnIniciar: TButton
