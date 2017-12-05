@@ -1,8 +1,8 @@
-program OrdemDeChegada;
+program Ordem_Chegada;
 
 uses
   Forms,
-  UOrdemDeChegada in 'UOrdemDeChegada.pas' {Form1};
+  Unit1 in 'Unit1.pas' {Form1};
 
 {$R *.res}
 
