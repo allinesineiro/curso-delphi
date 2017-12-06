@@ -1,0 +1,64 @@
+object Form1: TForm1
+  Left = 488
+  Top = 231
+  BorderStyle = bsToolWindow
+  Caption = 'Lista de Alunos'
+  ClientHeight = 333
+  ClientWidth = 319
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  Menu = MainMenu1
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lstAlunos: TListBox
+    Left = 8
+    Top = 8
+    Width = 305
+    Height = 249
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 18
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 264
+    Width = 305
+    Height = 25
+    Caption = 'Limpar todos os alunos'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object btnApagarAluno: TButton
+    Left = 8
+    Top = 296
+    Width = 305
+    Height = 25
+    Caption = 'Apagar aluno'
+    Enabled = False
+    TabOrder = 2
+    OnClick = btnApagarAlunoClick
+  end
+  object MainMenu1: TMainMenu
+    Left = 288
+    object Alunos1: TMenuItem
+      Caption = 'Alunos'
+      object Cadastrar1: TMenuItem
+        Caption = 'Cadastrar'
+        OnClick = Cadastrar1Click
+      end
+    end
+  end
+end
