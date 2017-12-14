@@ -1,8 +1,8 @@
 object Calculadora: TCalculadora
   Left = 747
   Top = 262
-  Width = 400
-  Height = 300
+  Width = 407
+  Height = 452
   Anchors = [akLeft]
   Caption = 'Calculadora'
   Color = clBtnFace
@@ -3250,6 +3250,7 @@ object Calculadora: TCalculadora
     FFFFFF}
   KeyPreview = True
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lblCasasDecimais: TLabel
@@ -3302,7 +3303,7 @@ object Calculadora: TCalculadora
     Left = 177
     Top = 11
     Width = 88
-    Height = 64
+    Height = 62
     Caption = 'Soma'
     TabOrder = 2
     OnClick = btnSomarClick
@@ -3367,5 +3368,20 @@ object Calculadora: TCalculadora
     Caption = 'Limpar'
     TabOrder = 8
     OnClick = btnLimparClick
+  end
+  object Um: TButton
+    Left = 8
+    Top = 272
+    Width = 49
+    Height = 25
+    Caption = '1'
+    TabOrder = 9
+  end
+  object edtVisor: TEdit
+    Left = 104
+    Top = 240
+    Width = 121
+    Height = 21
+    TabOrder = 10
   end
 end

@@ -20,6 +20,8 @@ type
     edtCasasDecimais: TEdit;
     Label1: TLabel;
     btnLimpar: TButton;
+    Um: TButton;
+    edtVisor: TEdit;
     procedure btnSomarClick(Sender: TObject);
     procedure btnSubtrairClick(Sender: TObject);
     procedure btnMultiplicarClick(Sender: TObject);
@@ -29,6 +31,7 @@ type
     procedure edtValor1KeyPress(Sender: TObject; var Key: Char);
     procedure edtValor2KeyPress(Sender: TObject; var Key: Char);
     procedure btnLimparClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     function ObterValor1(): Double;
     function ObterValor2(): Double;
@@ -43,6 +46,9 @@ type
 
 var
   Calculadora: TCalculadora;
+  num1: real;
+  num2: real;
+  opcao: integer;
 
 implementation
 
@@ -50,7 +56,6 @@ uses
   StrUtils;
 
 {$R *.dfm}
-
 procedure TCalculadora.btnSomarClick(Sender: TObject);
 var
   Resultado: Double;
@@ -90,7 +95,11 @@ end;
 function TCalculadora.ObterValor1(): Double;
 begin
      if edtValor1.Text = '' then
-      ShowMessage('Antes de continuar digite o valor')
+      begin
+        ShowMessage('Antes de continuar digite o valor');
+        edtValor1.SetFocus();
+        Abort
+      end
      else
       Result := StrToFloat(edtValor1.Text);
 
@@ -99,8 +108,12 @@ end;
 function TCalculadora.ObterValor2(): Double;
 begin
   if edtValor2.Text = '' then
-    ShowMessage('Antes de continuar digite o valor')
-  else
+    begin
+      ShowMessage('Antes de continuar digite o valor');
+      edtValor2.SetFocus();
+      Abort
+    end
+    else
     Result := StrToFloat(edtValor2.Text);
 end;
 
@@ -164,6 +177,12 @@ begin
     edtValor1.Clear;
     edtValor2.Clear;
     edtResultado.Clear;
+    edtVisor.Clear
+end;
+
+procedure TCalculadora.FormCreate(Sender: TObject);
+begin
+  edtVisor.Text:=edtVisor.Text+um.Caption;
 end;
 
 end.

@@ -3234,7 +3234,9 @@ object Form2: TForm2
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+  KeyPreview = True
   OldCreateOrder = False
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object lblCadastrar: TLabel
@@ -3248,7 +3250,7 @@ object Form2: TForm2
     Left = 16
     Top = 24
     Width = 297
-    Height = 25
+    Height = 21
     TabOrder = 0
   end
   object btnCadastrar: TButton

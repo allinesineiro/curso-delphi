@@ -12,16 +12,21 @@ type
     MainMenu1: TMainMenu;
     Alunos1: TMenuItem;
     Cadastrar1: TMenuItem;
-    Button1: TButton;
+    btnApagarTodos: TButton;
     btnApagarAluno: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Cadastrar1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnApagarTodosClick(Sender: TObject);
     procedure btnApagarAlunoClick(Sender: TObject);
+
   private
     procedure CarregarAlunos;
+    procedure ApagarAluno;
+
+    procedure Cadastrar;
+
   public
     { Public declarations }
   end;
@@ -52,7 +57,7 @@ begin
 
   for I := 0 to Lista.Count-1 do
     lstAlunos.Items.Add(Lista.ValueFromIndex[I]);
-
+    
   btnApagarAluno.Enabled := Lista.Count > 0;
 end;
 
@@ -64,10 +69,82 @@ end;
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
   if (Key = VK_F5) then
-    CarregarAlunos();
+    CarregarAlunos()
+  else
+    if (Key = VK_DELETE) then
+      ApagarAluno()
+    else
+      if (Key = VK_INSERT) then
+        Cadastrar();      
 end;
 
 procedure TForm1.Cadastrar1Click(Sender: TObject);
+begin
+  Cadastrar();
+end;
+
+procedure TForm1.btnApagarTodosClick(Sender: TObject);
+var
+  ArquivoIni: TIniFile;
+begin
+  ArquivoIni := TIniFile.Create('c:\alunos.ini');
+  ArquivoIni.EraseSection('Generica');
+  ArquivoIni.EraseSection('ID');
+  ArquivoIni.Free();
+
+  CarregarAlunos();
+end;
+
+procedure TForm1.btnApagarAlunoClick(Sender: TObject);
+begin
+  ApagarAluno();
+end;
+
+procedure TForm1.ApagarAluno;
+var
+  I: Integer;
+  Lista: TStringList;
+  ArquivoIni: TIniFile;
+var
+  AlunoSelecionado: string;
+begin
+  try
+    AlunoSelecionado := lstAlunos.Items[lstAlunos.ItemIndex];
+
+    if (SameText(AlunoSelecionado, 'Cassia')) then
+      raise Exception.Create('ninguem toca');
+
+    Lista := TStringList.Create();
+    try
+      ArquivoIni := TIniFile.Create('c:\alunos.ini');
+      try
+        ArquivoIni.ReadSectionValues('Generica', Lista);
+
+        for I := 0 to Lista.Count - 1 do
+        begin
+          if (Lista.ValueFromIndex[I] = AlunoSelecionado) then
+          begin
+            ArquivoIni.DeleteKey('Generica', Lista.Names[I]);
+            Break;
+          end;
+        end;
+      finally
+        ArquivoIni.Free();
+      end;
+    finally
+      Lista.Free();
+    end;
+
+    CarregarAlunos();
+  except
+    on E:EStringListError do
+    begin
+      ShowMessage('ninguem selecionado!');
+    end;
+  end;
+end;
+
+procedure TForm1.Cadastrar;
 var
   Tela: TForm2;
 begin
@@ -75,28 +152,6 @@ begin
   Tela.ShowModal();
 
   CarregarAlunos();
-end;
-
-procedure TForm1.Button1Click(Sender: TObject);
-var
-  ArquivoIni: TIniFile;
-begin
-  ArquivoIni := TIniFile.Create('c:\alunos.ini');
-  ArquivoIni.EraseSection('Generica');
-  ArquivoIni.Free();
-
-  CarregarAlunos();
-
-end;
-
-procedure TForm1.btnApagarAlunoClick(Sender: TObject);
-var
-  ArquivoIni: TIniFile;
-begin
-  ArquivoIni := TIniFile.Create('c:\alunos.ini');
-  //como fazer
-  ArquivoIni.Free();
-
 end;
 
 end.

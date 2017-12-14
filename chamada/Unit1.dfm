@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 608
-  Top = 273
-  BorderStyle = bsToolWindow
+  Left = 614
+  Top = 265
+  Width = 359
+  Height = 363
+  BorderIcons = [biSystemMenu]
   Caption = 'Lista de presen'#231'a'
-  ClientHeight = 328
-  ClientWidth = 345
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3219,19 +3219,19 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
   end
-  object Button1: TButton
-    Left = 8
-    Top = 264
-    Width = 323
+  object btnApagarTodos: TButton
+    Left = 176
+    Top = 272
+    Width = 155
     Height = 25
     Caption = 'Limpar todos os alunos'
     TabOrder = 1
-    OnClick = Button1Click
+    OnClick = btnApagarTodosClick
   end
   object btnApagarAluno: TButton
     Left = 8
-    Top = 296
-    Width = 323
+    Top = 272
+    Width = 153
     Height = 25
     Caption = 'Apagar aluno'
     Enabled = False
